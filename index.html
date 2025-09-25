@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Interaktif: Belajar Form HTML</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        .interactive-section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        textarea,
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button, input[type="submit"], input[type="reset"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+        input[type="reset"] {
+            background-color: #6c757d;
+        }
+        input[type="reset"]:hover {
+            background-color: #5a6268;
+        }
+        .editor-container {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+        }
+        .editor-pane, .preview-pane {
+            flex-basis: 50%;
+        }
+        #html_editor {
+            width: 100%;
+            height: 400px;
+            font-family: monospace;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #preview_frame {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+        .quiz-question {
+            margin-bottom: 15px;
+        }
+        .quiz-question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .quiz-question label {
+            font-weight: normal;
+        }
+        #quizResult {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .fail {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body onload="renderPreview()">
+    <h1><marquee>WELCOME TO MODUL INTERAKTIF FORM HTML</marquee></h1>
+    <h1>🚀 Media Interaktif: Belajar Form HTML</h1>
+    <p>Selamat datang di modul interaktif untuk mempelajari dasar-dasar Form HTML! Di sini, Anda tidak hanya akan membaca materi, tetapi juga bisa langsung mencoba dan melihat hasilnya.</p>
+
+    <hr>
+
+    <h2>1. Apa itu Form HTML?</h2>
+    <p>Form HTML adalah elemen yang digunakan untuk mengumpulkan input dari pengguna. Pikirkan form sebagai jembatan antara pengguna dan server. Pengguna mengisi data, lalu data tersebut dikirim untuk diproses.</p>
+    <ul>
+        <li><b>Wadah Form:</b> Dibuat dengan tag <code>&lt;form&gt;</code>.</li>
+        <li><b>Elemen Input:</b> Komponen interaktif seperti kolom teks, tombol, dan kotak centang.</li>
+    </ul>
+    
+    <hr>
+
+    <h2>2. Elemen-Elemen Penting dalam Form</h2>
+    
+    <h3>a. Tag <code>&lt;form&gt;</code></h3>
+    <p>Ini adalah "rumah" bagi semua elemen input. Dua atribut terpentingnya adalah <code>action</code> dan <code>method</code>.</p>
+    <div class="interactive-section">
+        <h4>Coba Sendiri: GET vs. POST</h4>
+        <p>Masukkan nama Anda dan coba kedua tombol di bawah ini. Perhatikan <b>address bar</b> pada browser setelah Anda menekan tombol "Kirim dengan GET".</p>
+        <form action="#" method="GET" target="_blank">
+            <label for="nama_get">Nama:</label>
+            <input type="text" id="nama_get" name="nama" placeholder="Kirim sebagai 'GET'">
+            <br><br>
+            <button type="submit">Kirim dengan GET</button>
+        </form>
+        <br>
+        <form action="#" method="POST" target="_blank">
+            <label for="nama_post">Nama:</label>
+            <input type="text" id="nama_post" name="nama" placeholder="Kirim sebagai 'POST'">
+            <br><br>
+            <button type="submit">Kirim dengan POST</button>
+        </form>
+        <p>💡 Dengan <b>GET</b>, data akan terlihat di URL. Dengan <b>POST</b>, data dikirim secara tersembunyi, sehingga lebih aman untuk informasi sensitif.</p>
+    </div>
+
+    <h3>b. Tag <code>&lt;input&gt;</code></h3>
+    <p>Ini adalah elemen paling serbaguna. Mari kita coba beberapa <code>type</code> yang paling umum.</p>
+    <div class="interactive-section">
+        <h4>Interaksi Langsung dengan Berbagai Tipe Input</h4>
+        <form action="#" method="GET">
+            <p>
+                <label for="coba_text"><b>type="text"</b></label>
+                <input type="text" id="coba_text" name="text_input" placeholder="Teks biasa...">
+            </p>
+            <p>
+                <label for="coba_password"><b>type="password"</b></label>
+                <input type="password" id="coba_password" name="password_input" placeholder="Password rahasia...">
+            </p>
+            <p>
+                <label for="coba_date"><b>type="date"</b></label>
+                <input type="date" id="coba_date" name="date_input">
+            </p>
+            <p>
+                <label><b>type="radio"</b> (pilih satu):</label>
+                <label style="font-weight: normal;"><input type="radio" name="gender" value="pria"> Pria</label>
+                <label style="font-weight: normal;"><input type="radio" name="gender" value="wanita"> Wanita</label>
+            </p>
+            <p>
+                <label><b>type="checkbox"</b> (pilih banyak):</label>
+                <label style="font-weight: normal;"><input type="checkbox" name="hobi" value="membaca"> Membaca</label>
+                <label style="font-weight: normal;"><input type="checkbox" name="hobi" value="menulis"> Menulis</label>
+            </p>
+            <p>
+                <label for="coba_file"><b>type="file"</b></label>
+                <input type="file" id="coba_file" name="file_upload">
+            </p>
+            <input type="submit" value="Kirim Data">
+            <input type="reset" value="Reset Form">
+        </form>
+    </div>
+
+    <h3>c. Tag <code>&lt;textarea&gt;</code>, <code>&lt;select&gt;</code>, dan <code>&lt;button&gt;</code></h3>
+    <div class="interactive-section">
+        <h4>Coba Sendiri</h4>
+        <p>Isi form di bawah ini untuk melihat cara kerja elemen-elemen tersebut.</p>
+        <form action="#" method="POST">
+            <p>
+                <label for="komentar"><b>Komentar Anda (textarea):</b></label>
+                <textarea id="komentar" name="komentar" rows="4" placeholder="Tulis sesuatu yang panjang di sini..."></textarea>
+            </p>
+            <p>
+                <label for="kota"><b>Pilih Kota (select):</b></label>
+                <select id="kota" name="kota">
+                    <option value="">--Pilih Opsi--</option>
+                    <option value="jakarta">Jakarta</option>
+                    <option value="bandung">Bandung</option>
+                    <option value="surabaya">Surabaya</option>
+                </select>
+            </p>
+            <p>
+                <button type="submit">
+                    ✉️ Kirim dengan Tombol
+                </button>
+            </p>
+        </form>
+    </div>
+    
+    <hr>
+    
+    <h2>3.  Latihan: Membuat Form Login 🛠️</h2>
+    <p>Sekarang saatnya mempraktikkan semua yang telah Anda pelajari! Ubah kode di editor sebelah kiri dan lihat hasilnya secara <em>real-time</em> di sebelah kanan.</p>
+    <p><b>Tantangan:</b></p>
+    <ol>
+        <li>Ubah <code>placeholder</code> untuk username menjadi "Masukkan email Anda".</li>
+        <li>Tambahkan atribut <code>required</code> pada input password agar wajib diisi.</li>
+        <li>Ubah teks pada tombol "Login" menjadi "Masuk Sekarang".</li>
+    </ol>
+
+    <div class="editor-container">
+        <div class="editor-pane">
+            <b>Editor Kode HTML:</b>
+            <textarea id="html_editor" onkeyup="renderPreview()">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Login</title>
+    <style>
+        body { font-family: sans-serif; padding: 15px; }
+        fieldset { border: 1px solid #ccc; border-radius: 5px; padding: 20px; }
+        legend { font-weight: bold; }
+        label { display: block; margin-bottom: 5px; }
+        input[type='text'], input[type='password'] {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        input[type='submit'] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="POST">
+        <fieldset>
+            <legend>Login</legend>
+            <p>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="username..." />
+            </p>
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="password..." />
+            </p>
+            <p>
+                <label><input type="checkbox" name="remember" value="remember" /> Remember me</label>
+            </p>
+            <p>
+                <input type="submit" name="submit" value="Login" />
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>
+            </textarea>
+        </div>
+        <div class="preview-pane">
+            <b>Hasil Tampilan:</b>
+            <iframe id="preview_frame"></iframe>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>4. Kuis Interaktif: Uji Pemahamanmu! 🧠</h2>
+    <div class="interactive-section">
+        <form id="quizForm">
+            <div class="quiz-question">
+                <p>1. Tag apa yang digunakan sebagai pembungkus utama untuk semua elemen input dalam sebuah form?</p>
+                <label><input type="radio" name="q1" value="a"> &lt;input&gt;</label><br>
+                <label><input type="radio" name="q1" value="b"> &lt;form&gt;</label><br>
+                <label><input type="radio" name="q1" value="c"> &lt;div&gt;</label><br>
+            </div>
+            
+            <div class="quiz-question">
+                <p>2. Metode pengiriman form mana yang menampilkan data di URL browser?</p>
+                <label><input type="radio" name="q2" value="a"> POST</label><br>
+                <label><input type="radio" name="q2" value="b"> SEND</label><br>
+                <label><input type="radio" name="q2" value="c"> GET</label><br>
+            </div>
+
+            <div class="quiz-question">
+                <p>3. Untuk membuat kolom input teks satu baris, `type` apa yang Anda gunakan pada tag &lt;input&gt;?</p>
+                <label><input type="radio" name="q3" value="a"> type="textarea"</label><br>
+                <label><input type="radio" name="q3" value="b"> type="text"</label><br>
+                <label><input type="radio" name="q3" value="c"> type="string"</label><br>
+            </div>
+
+            <div class="quiz-question">
+                <p>4. Jika Anda ingin input dari pengguna disembunyikan (misalnya untuk password), `type` apa yang paling tepat?</p>
+                <label><input type="radio" name="q4" value="a"> type="hidden"</label><br>
+                <label><input type="radio" name="q4" value="b"> type="secure"</label><br>
+                <label><input type="radio" name="q4" value="c"> type="password"</label><br>
+            </div>
+            
+            <div class="quiz-question">
+                <p>5. Elemen apa yang digunakan untuk membuat area input teks yang bisa menampung banyak baris?</p>
+                <label><input type="radio" name="q5" value="a"> &lt;textarea&gt;</label><br>
+                <label><input type="radio" name="q5" value="b"> &lt;input type="multiline"&gt;</label><br>
+                <label><input type="radio" name="q5" value="c"> &lt;input type="text" rows="5"&gt;</label><br>
+            </div>
+
+            <div class="quiz-question">
+                <p>6. Untuk membuat daftar pilihan (dropdown), Anda menggunakan tag &lt;select&gt; yang di dalamnya berisi tag...</p>
+                <label><input type="radio" name="q6" value="a"> &lt;list&gt;</label><br>
+                <label><input type="radio" name="q6" value="b"> &lt;option&gt;</label><br>
+                <label><input type="radio" name="q6" value="c"> &lt;choice&gt;</label><br>
+            </div>
+
+            <div class="quiz-question">
+                <p>7. `type="radio"` digunakan untuk...</p>
+                <label><input type="radio" name="q7" value="a"> Memungkinkan pengguna memilih beberapa opsi dari daftar.</label><br>
+                <label><input type="radio" name="q7" value="b"> Memutar stasiun radio favorit.</label><br>
+                <label><input type="radio" name="q7" value="c"> Memungkinkan pengguna hanya memilih satu opsi dari beberapa pilihan.</label><br>
+            </div>
+
+            <div class="quiz-question">
+                <p>8. Atribut pada tag &lt;form&gt; yang menentukan ke mana data akan dikirim setelah disubmit adalah...</p>
+                <label><input type="radio" name="q8" value="a"> method</label><br>
+                <label><input type="radio" name="q8" value="b"> action</label><br>
+                <label><input type="radio" name="q8" value="c"> target</label><br>
+            </div>
+
+            <div class="quiz-question">
+                <p>9. `type="checkbox"` paling cocok digunakan saat...</p>
+                <label><input type="radio" name="q9" value="a"> Pengguna harus memilih satu dari sekian banyak pilihan.</label><br>
+                <label><input type="radio" name="q9" value="b"> Pengguna boleh memilih lebih dari satu opsi (misal: hobi).</label><br>
+                <label><input type="radio" name="q9" value="c"> Mengisi teks yang panjang.</label><br>
+            </div>
+
+            <div class="quiz-question">
+                <p>10. Tombol yang berfungsi untuk mengosongkan semua isian form kembali ke keadaan semula adalah...</p>
+                <label><input type="radio" name="q10" value="a"> &lt;input type="submit"&gt;</label><br>
+                <label><input type="radio" name="q10" value="b"> &lt;button type="clear"&gt;</label><br>
+                <label><input type="radio" name="q10" value="c"> &lt;input type="reset"&gt;</label><br>
+            </div>
+            
+            <button type="submit">Kirim Jawaban</button>
+        </form>
+        <div id="quizResult"></div>
+    </div>
+
+    <script>
+        function renderPreview() {
+            var htmlCode = document.getElementById('html_editor').value;
+            var iframe = document.getElementById('preview_frame');
+            var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            iframeDoc.open();
+            iframeDoc.write(htmlCode);
+            iframeDoc.close();
+        }
+
+        // --- SKRIP UNTUK SKOR KUIS ---
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            // Mencegah halaman reload saat tombol submit ditekan
+            event.preventDefault();
+
+            const correctAnswers = {
+                q1: 'b',
+                q2: 'c',
+                q3: 'b',
+                q4: 'c',
+                q5: 'a',
+                q6: 'b',
+                q7: 'c',
+                q8: 'b',
+                q9: 'b',
+                q10: 'c'
+            };
+
+            let score = 0;
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Iterasi melalui kunci jawaban dan bandingkan dengan jawaban user
+            for (const [question, answer] of Object.entries(correctAnswers)) {
+                if (formData.get(question) === answer) {
+                    score++;
+                }
+            }
+
+            const totalQuestions = Object.keys(correctAnswers).length;
+            const resultElement = document.getElementById('quizResult');
+            const percentage = (score / totalQuestions) * 100;
+
+            let message = `Skor Anda: ${score} dari ${totalQuestions} (${percentage.toFixed(0)}%). `;
+            
+            // Memberi feedback berdasarkan skor
+            if (percentage >= 80) {
+                message += "Luar biasa! Pemahaman Anda sangat baik. 👍";
+                resultElement.className = 'success';
+            } else if (percentage >= 50) {
+                message += "Bagus! Anda sudah paham dasarnya. Coba lagi untuk hasil lebih baik. 😊";
+                resultElement.className = 'success';
+            } else {
+                message += "Jangan menyerah! Coba baca kembali materi di atas dan ulangi kuisnya. 💪";
+                resultElement.className = 'fail';
+            }
+            
+            resultElement.innerText = message;
+        });
+    </script>
+
+</body>
+</html>
